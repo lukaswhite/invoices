@@ -63,6 +63,21 @@ class Invoice
     protected $notes;
 
     /**
+     * @var float
+     */
+    protected $discountAmount;
+
+    /**
+     * @var int
+     */
+    protected $discountPercentage;
+
+    /**
+     * @var float
+     */
+    protected $shipping;
+
+    /**
      * @var array
      */
     protected $items = [];
@@ -178,6 +193,40 @@ class Invoice
     }
 
     /**
+     * Set a discount as an (monetary) amount, which will get deducted from the sub-total.
+     *
+     * @param float $amount
+     * @return $this
+     */
+    public function discountedByAmount(float $amount): self
+    {
+        $this->discountAmount = $amount;
+        return $this;
+    }
+
+    /**
+     * Set a discount as a percentage.
+     *
+     * @param int $percentage
+     * @return $this
+     */
+    public function discountedByPercentage(int $percentage): self
+    {
+        $this->discountPercentage = $percentage;
+        return $this;
+    }
+
+    /**
+     * @param float $amount
+     * @return $this
+     */
+    public function withShippingCost(float $amount): self
+    {
+        $this->shipping = $amount;
+        return $this;
+    }
+
+    /**
      * @param Item $item
      * @return $this
      */
@@ -257,6 +306,38 @@ class Invoice
     public function getNotes(): ?string
     {
         return $this->notes;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDiscountAmount(): float
+    {
+        return $this->discountAmount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDiscountPercentage(): int
+    {
+        return $this->discountPercentage;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasDiscount(): bool
+    {
+        return !empty($this->discountAmount) || !empty($this->discountPercentage);
+    }
+
+    /**
+     * @return float
+     */
+    public function getShipping(): float
+    {
+        return $this->shipping;
     }
 
     /**

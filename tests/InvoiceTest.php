@@ -101,4 +101,27 @@ class InvoiceTest extends TestCase
         $this->assertEquals(['terms' => 'Payable within 14 days'], $invoice->getCustomFields());
     }
 
+    public function test_can_discount_by_amount()
+    {
+        $invoice = new Invoice();
+        $invoice->discountedByAmount(100);
+        $this->assertTrue($invoice->hasDiscount());
+        $this->assertEquals(100, $invoice->getDiscountAmount());
+    }
+
+    public function test_can_discount_by_percentage()
+    {
+        $invoice = new Invoice();
+        $invoice->discountedByPercentage(50);
+        $this->assertTrue($invoice->hasDiscount());
+        $this->assertEquals(50, $invoice->getDiscountPercentage());
+    }
+
+    public function test_can_add_shipping_costs()
+    {
+        $invoice = new Invoice();
+        $invoice->withShippingCost(2.95);
+        $this->assertEquals(2.95, $invoice->getShipping());
+    }
+
 }
