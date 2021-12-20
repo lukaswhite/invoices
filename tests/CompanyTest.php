@@ -38,5 +38,10 @@ class CompanyTest extends TestCase
             'website'   =>  'www.acme.org',
             'email'     =>  'enquries@acme.org',
         ], $company->getCustomFields());
+
+        $this->assertTrue($company->hasCustomField('website'));
+        $this->assertTrue($company->hasCustomField('website'));
+
+        $this->assertEquals('www.acme.org', $company->getCustomField('website'));
     }
 }

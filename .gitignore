@@ -1,5 +1,6 @@
 vendor/
 coverage/
+html-coverage/
 .DS_Store
 .idea/
 .phpunit.result.cache

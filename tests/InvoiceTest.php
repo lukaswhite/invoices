@@ -18,6 +18,7 @@ class InvoiceTest extends TestCase
             ->numbered('INV0001')
             ->totalling(100.5)
             ->inCurrency('GBP')
+            ->withStatus('Paid')
             ->issuedBy(
                 (new Company('Acme'))
                     ->setAddress(
@@ -63,6 +64,7 @@ class InvoiceTest extends TestCase
         $this->assertEquals('INV0001', $invoice->getNumber());
         $this->assertEquals(100.5, $invoice->getTotal());
         $this->assertEquals('GBP', $invoice->getCurrency());
+        $this->assertEquals('Paid', $invoice->getStatus());
         $this->assertEquals('Acme', $invoice->getCompany()->getName());
         $this->assertEquals('Customer Inc.', $invoice->getCustomer()->getName());
         $this->assertEquals('2021-12-07', date_format($invoice->getDate(), 'Y-m-d'));

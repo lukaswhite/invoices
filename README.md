@@ -11,6 +11,7 @@ $invoice
     ->numbered('INV0001')
     ->totalling(100.5)
     ->inCurrency('GBP')
+    ->setStatus('Overdue')
     ->issuedBy(
         (new Company('Acme'))
             ->setAddress(
@@ -20,6 +21,7 @@ $invoice
                     ->setLine3('Or other')
                     ->setCity('Somewhereville')
                     ->setPostalCode('S0M WHR3')
+                    ->setCountry('United Kingdom')
             )
     )
     ->issuedTo(
@@ -31,6 +33,7 @@ $invoice
                     ->setLine3('Or other')
                     ->setCity('Somewhereville')
                     ->setPostalCode('S0M WHR3')
+                    ->setCountry('United Kingdom')
             )
     )
     ->dated(new \DateTime('2021-12-07'))

@@ -55,6 +55,11 @@ class Invoice
     /**
      * @var string
      */
+    protected $status;
+
+    /**
+     * @var string
+     */
     protected $notes;
 
     /**
@@ -153,6 +158,16 @@ class Invoice
     }
 
     /**
+     * @param string $status
+     * @return $this
+     */
+    public function withStatus(string $status): self
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
      * @param string $notes
      * @return $this
      */
@@ -226,6 +241,14 @@ class Invoice
     public function getCustomer(): Company
     {
         return $this->customer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
     }
 
     /**

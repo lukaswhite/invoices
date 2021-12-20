@@ -32,6 +32,11 @@ class Address
     protected $postalCode;
 
     /**
+     * @var string
+     */
+    protected $country;
+
+    /**
      * @return string
      */
     public function getLine1(): ?string
@@ -121,5 +126,22 @@ class Address
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     * @return Address
+     */
+    public function setCountry(string $country): Address
+    {
+        $this->country = $country;
+        return $this;
+    }
 
 }

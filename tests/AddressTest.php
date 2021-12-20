@@ -15,12 +15,14 @@ class AddressTest extends TestCase
             ->setLine2('Somewhere')
             ->setLine3('Or other')
             ->setCity('Somewhereville')
-            ->setPostalCode('S0M WHR3');
+            ->setPostalCode('S0M WHR3')
+            ->setCountry('United Kingdom');
 
         $this->assertEquals('123 Something Street', $address->getLine1());
         $this->assertEquals('Somewhere', $address->getLine2());
         $this->assertEquals('Or other', $address->getLine3());
         $this->assertEquals('Somewhereville', $address->getCity());
         $this->assertEquals('S0M WHR3', $address->getPostalCode());
+        $this->assertEquals('United Kingdom', $address->getCountry());
     }
 }
